@@ -1,0 +1,59 @@
+version: "1.0.0"
+
+services:
+  mongo-primary:
+    container_name: mongo-primary
+    image: mongo
+    ports:
+      - "27001:27017"
+    command: mongod --replSet "rs0"
+    environment:
+      - MONGO_INITDB_REPLICASET=rs0
+      # MONGO_INITDB_ROOT_USERNAME: root
+      # MONGO_INITDB_ROOT_PASSWORD: QuocAnh-1809
+    volumes:
+      - ./mongodb/primary:/data/db
+    restart: always
+    networks:
+      - mongo_replica
+
+  mongo-secondary-1:
+    container_name: mongo-secondary-1
+    image: mongo
+    ports:
+      - "27002:27017"
+    command: mongod --replSet "rs0"
+    volumes:
+      - ./mongodb/secondary1:/data/db
+    environment:
+      - MONGO_INITDB_REPLICASET=rs0
+      # MONGO_INITDB_ROOT_USERNAME: root
+      # MONGO_INITDB_ROOT_PASSWORD: QuocAnh-1809
+    restart: always
+    networks:
+      - mongo_replica
+
+  mongo-secondary-2:
+    container_name: mongo-secondary-2
+    image: mongo
+    ports:
+      - "27003:27017"
+    command: mongod --replSet "rs0"
+    volumes:
+      - ./mongodb/secondary2:/data/db
+    environment:
+      - MONGO_INITDB_REPLICASET=rs0
+      # MONGO_INITDB_ROOT_USERNAME: root
+      # MONGO_INITDB_ROOT_PASSWORD: QuocAnh-1809
+    restart: always
+    networks:
+      - mongo_replica
+
+volumes:
+  mongo-primary:
+  mongo-secondary-1:
+  mongo-secondary-2:
+
+networks:
+  mongo_replica:
+    driver: bridge

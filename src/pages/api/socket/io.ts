@@ -2,7 +2,7 @@ import { Server as NetServer } from "http";
 import { NextApiRequest } from "next";
 import { Server as ServerIO } from "socket.io";
 
-import { NextApiResponseServerIo } from "@/types";
+import { NextApiResponseServerIo } from "@/types/types";
 
 export const config = {
   api: {
@@ -23,6 +23,6 @@ const ioHandler = (req: NextApiRequest, res: NextApiResponseServerIo) => {
   }
 
   res.end();
-}
+};
 
 export default ioHandler;
