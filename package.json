@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "npx primsa db push && next build",
+    "build": "npx prisma db push && next build",
     "start": "next start",
     "lint": "next lint",
     "prisma:migrate": "prisma migrate save --schema=./app/data_access/prisma/schema.prisma --experimental && prisma migrate up --schema=./app/data_access/prisma/schema.prisma --experimental",
