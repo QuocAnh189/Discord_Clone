@@ -4,17 +4,18 @@ generator client {
 }
 
 datasource db {
-  provider     = "mongodb"
-  url          = env("DATABASE_URL")
+  provider     = "postgresql"
+  url          = env("POSTGRES_PRISMA_URL") // uses connection pooling
+  directUrl    = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
   relationMode = "prisma"
 }
 
 model Profile {
-  id       String  @id @default(auto()) @map("_id") @db.ObjectId
+  id       String  @id @default(uuid())
   userId   String? @unique
   name     String
-  imageUrl String  @db.String
-  email    String  @db.String
+  imageUrl String  @db.Text
+  email    String  @db.Text
 
   servers  Server[]
   members  Member[]
@@ -25,12 +26,12 @@ model Profile {
 }
 
 model Server {
-  id         String @id @default(auto()) @map("_id") @db.ObjectId
+  id         String @id @default(uuid())
   name       String
-  imageUrl   String @db.String
+  imageUrl   String @db.Text
   inviteCode String @unique
 
-  profileId String  @db.ObjectId
+  profileId String
   profile   Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
 
   members  Member[]
@@ -49,13 +50,13 @@ enum MemberRole {
 }
 
 model Member {
-  id   String     @id @default(auto()) @map("_id") @db.ObjectId
+  id   String     @id @default(uuid())
   role MemberRole @default(GUEST)
 
-  profileId String  @db.ObjectId
+  profileId String
   profile   Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
 
-  serverId String @db.ObjectId
+  serverId String
   server   Server @relation(fields: [serverId], references: [id], onDelete: Cascade)
 
   messages       Message[]
@@ -78,14 +79,14 @@ enum ChannelType {
 }
 
 model Channel {
-  id   String      @id @default(auto()) @map("_id") @db.ObjectId
+  id   String      @id @default(uuid())
   name String
   type ChannelType @default(TEXT)
 
-  profileId String  @db.ObjectId
+  profileId String
   profile   Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
 
-  serverId String @db.ObjectId
+  serverId String
   server   Server @relation(fields: [serverId], references: [id], onDelete: Cascade)
 
   messages Message[]
@@ -98,15 +99,15 @@ model Channel {
 }
 
 model Message {
-  id      String @id @default(auto()) @map("_id") @db.ObjectId
-  content String @db.String
+  id      String @id @default(uuid()) @map("_id")
+  content String @db.Text
 
-  fileUrl String? @db.String
+  fileUrl String? @db.Text
 
-  memberId String @db.ObjectId
+  memberId String
   member   Member @relation(fields: [memberId], references: [id], onDelete: Cascade)
 
-  channelId String  @db.ObjectId
+  channelId String
   channel   Channel @relation(fields: [channelId], references: [id], onDelete: Cascade)
 
   deleted Boolean @default(false)
@@ -119,12 +120,12 @@ model Message {
 }
 
 model Conversation {
-  id String @id @default(auto()) @map("_id") @db.ObjectId
+  id String @id @default(uuid())
 
-  memberOneId String @db.ObjectId
+  memberOneId String
   memberOne   Member @relation("MemberOne", fields: [memberOneId], references: [id], onDelete: Cascade)
 
-  memberTwoId String @db.ObjectId
+  memberTwoId String
   memberTwo   Member @relation("MemberTwo", fields: [memberTwoId], references: [id], onDelete: Cascade)
 
   directMessages DirectMessage[]
@@ -134,14 +135,14 @@ model Conversation {
 }
 
 model DirectMessage {
-  id      String  @id @default(auto()) @map("_id") @db.ObjectId
-  content String  @db.String
-  fileUrl String? @db.String
+  id      String  @id @default(uuid())
+  content String  @db.Text
+  fileUrl String? @db.Text
 
-  memberId String @db.ObjectId
+  memberId String
   member   Member @relation(fields: [memberId], references: [id], onDelete: Cascade)
 
-  conversationId String       @db.ObjectId
+  conversationId String
   conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
 
   deleted Boolean @default(false)
