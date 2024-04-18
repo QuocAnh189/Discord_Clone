@@ -6,7 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prisma:migrate": "prisma migrate save --schema=./app/data_access/prisma/schema.prisma --experimental && prisma migrate up --schema=./app/data_access/prisma/schema.prisma --experimental",
+    "prisma:unmigrate": "prisma migrate down --schema=./app/data_access/prisma/schema.prisma --experimental",
+    "prisma:introspect": "prisma introspect --schema=./app/data_access/prisma/schema.prisma",
+    "prisma:generate": "prisma generate --schema=./app/data_access/prisma/schema.prisma"
   },
   "dependencies": {
     "@clerk/nextjs": "^4.23.2",
