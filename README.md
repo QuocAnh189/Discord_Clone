@@ -1,10 +1,8 @@
-# Fullstack Discord Clone: Next.js 13, React, Socket.io, Prisma, Tailwind, MySQL
+# Discord Clone
 
-<!-- ![Copy of Copy of Copy of Fullstack Twitter Clone (5)](https://github.com/AntonioErdeljac/next13-discord-clone/assets/23248726/14e25e4f-eb83-44dd-8b97-4f2666b89386) -->
+===========================================================
 
-This is a repository for Fullstack Discord Clone: Next.js 13, React, Socket.io, Prisma, Tailwind, MySQL | Full Course 2023
-
-Features:
+### Features :
 
 - Real-time messaging using Socket.io
 - Send attachments as messages using UploadThing
@@ -24,63 +22,32 @@ Features:
 - MySQL database using Planetscale
 - Authentication with Clerk
 
-### Prerequisites
+# 1. How to run the app (Development Environment)
 
-**Node version 18.x.x**
+1. Clone the repo and cd into it
+2. Run `npm i` local dev environment
+3. Setup Prisma with `npx prisma generate` and `npx prisma db push`
+4. Rename or copy `.env.example` file to `.env`
+5. Run `npm run dev` to visit `localhost:3000` in your browser
 
-### Cloning the repository
+#### App demo :
 
-```shell
-git clone https://github.com/AntonioErdeljac/next13-discord-clone.git
-```
+![AppDemo](https://anhquocdev-discord.vercel.app/)
 
-### Install packages
+### Screen :
 
-```shell
-npm i
-```
+![iamgedemo](https://res.cloudinary.com/dadvtny30/image/upload/v1728471276/portfolio/project/joibnltfldmrgeyta9vd.png)
 
-### Setup .env file
+### Read the documentation
 
-```js
-NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
-CLERK_SECRET_KEY=
-NEXT_PUBLIC_CLERK_SIGN_IN_URL=
-NEXT_PUBLIC_CLERK_SIGN_UP_URL=
-NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=
-NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=
+Read [the documentation of next.js](https://nextjs.org/).
+Read [the documentation of react](https://react.dev/)
 
+## Author Contact
 
-DATABASE_URL=
+Contact me with any questions!<br>
 
-UPLOADTHING_SECRET=
-UPLOADTHING_APP_ID=
+Email: anquoc18092003@gmail.com
+Facebook: https://www.facebook.com/tranphuocanhquoc2003
 
-LIVEKIT_API_KEY=
-LIVEKIT_API_SECRET=
-NEXT_PUBLIC_LIVEKIT_URL=
-```
-
-### Setup Prisma
-
-Add MySQL Database (I used PlanetScale)
-
-```shell
-npx prisma generate
-npx prisma db push
-
-```
-
-### Start the app
-
-```shell
-npm run dev
-```
-
-## Available commands
-
-Running commands with npm `npm run [command]`
-
-| command | description                              |
-| :------ | :--------------------------------------- |
-| `dev`   | Starts a development instance of the app |
+<p style="text-align:center">Thank You so much for your time !!!</p>
