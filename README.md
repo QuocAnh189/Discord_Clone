@@ -32,11 +32,11 @@
 
 #### App demo :
 
-![AppDemo](https://anhquocdev-discord.vercel.app/)
+[AppDemo](https://anhquocdev-discord.vercel.app/)
 
 ### Screen :
 
-![iamgedemo](https://res.cloudinary.com/dadvtny30/image/upload/v1728471276/portfolio/project/joibnltfldmrgeyta9vd.png)
+![iamgedemo](https://res.cloudinary.com/dadvtny30/image/upload/v1728472560/portfolio/project/puxkh34xpzdljt3ofj9d.png)
 
 ### Read the documentation
 
