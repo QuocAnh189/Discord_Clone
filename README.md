@@ -2,6 +2,10 @@
 
 ===========================================================
 
+#### Database :
+
+![iamgedemo](https://res.cloudinary.com/dadvtny30/image/upload/v1729696956/database/mfwh02tosaedijrl7l53.png)
+
 ### Features :
 
 - Real-time messaging using Socket.io
